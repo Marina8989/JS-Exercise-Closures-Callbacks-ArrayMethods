@@ -233,18 +233,14 @@ function firstNamesAllCaps(runners) {
  */
 function getRunnersByTShirtSize(runners, tShirtSize) {
     /* CODE HERE */
-    let newArr = [];
-    runners.filter(function(runner) {
-        if (runner.tShirtSize === "S" || runner.tShirtSize === "M" || runner.tShirtSize === 'L' ||
-            runner.tShirtSize === "L" || runner.tShirtSize === "XL" || runner.tShirtSize === "2XL" ||
-            runner.tShirtSize === "3XL") {
-            return newArr.push(`${runner.last_name}`);
-        }
 
+    const shirtSize = runners.filter(function(currentValue) {
+        return (currentValue.shirt_size === tShirtSize);
     })
-    return newArr;
-}
 
+    return shirtSize;
+
+}
 /**
  * ### Challenge `tallyUpDonations`
  * 
@@ -312,8 +308,16 @@ function counterMaker() {
  * counter() // should return 0
  * etc
  */
-function counterMakerWithLimit( /* CODE HERE */ ) {
+function counterMakerWithLimit(maxValue) {
     /* CODE HERE */
+    let count = 0;
+    return function() {
+        if (count > maxValue) {
+            count = 0;
+        }
+        return count++;
+    }
+
 }
 
 /////////////// END OF CHALLENGE ///////////////
